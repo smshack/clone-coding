@@ -15,8 +15,8 @@ let tweets =[
         id:'2',
         text:"안녕",
         createdAt:Date.now().toString(),
-        name:'jarry',
-        username:'jarry',
+        name:'ellie',
+        username:'ellie',
         url:"https://item.kakaocdn.net/do/62583c7d1cd73fb8a1e9fe0a5cf80ceef43ad912ad8dd55b04db6a64cddaf76d"
     },
 ];
@@ -42,6 +42,7 @@ router.get('/:id',(req,res,next)=>{
 })
 // POST /tweets
 router.post('/',(req,res,next)=>{
+    console.log(req.body)
     const {text,name,username} = req.body;
     const tweet ={
         id:Date.now().toString(),
@@ -51,12 +52,14 @@ router.post('/',(req,res,next)=>{
         username,
     }
     tweets = [tweet,...tweets];
+    console.log(tweet)
     return res.status(201).json(tweet)
 })
 // PUT /tweets/:id
 router.put('/:id',(req,res,next)=>{
     const id = req.params.id;
     const text = req.body.text;
+    console.log(text,id)
     const tweet = tweets.find((tweet)=>tweet.id ===id);
     if(tweet){
         tweet.text =text;
@@ -68,8 +71,9 @@ router.put('/:id',(req,res,next)=>{
 // DELETE /tweets/:id
 router.delete('/:id',(req,res,next)=>{
     const id = req.params.id;
+    console.log(id)
     tweets = tweets.filter((tweet)=>tweet.id !==id);
-    return res.sendStatus(204).send(tweet)
+    return res.sendStatus(204)
 })
 
 module.exports = router;
