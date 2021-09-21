@@ -6,7 +6,7 @@ export default class TweetService {
       createdAt: '2021-05-09T04:20:57.000Z',
       name: 'Bob',
       username: 'bob',
-      url: 'https://widgetwhats.com/app/uploads/2019/11/free-profile-photo-whatsapp-1.png',
+      url: 'https://item.kakaocdn.net/do/62583c7d1cd73fb8a1e9fe0a5cf80ceef43ad912ad8dd55b04db6a64cddaf76d',
     },
   ];
 
