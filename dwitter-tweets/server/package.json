@@ -9,11 +9,13 @@
   "author": "smshack 서명석",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "express-validator": "^6.12.1",
     "helmet": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "stream": "^0.0.2"
   },

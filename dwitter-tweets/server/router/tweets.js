@@ -4,6 +4,7 @@ const router = express.Router();
 const { tweetController } = require('../controller/tweet');
 const { body, param } = require('express-validator');
 const validate = require(`../middleware/validator`);
+const isAuth = require(`../middleware/auth`);
 
 //validation
 // sanitization
@@ -19,12 +20,12 @@ const validateTweet = [
 // Get /tweets?username="username"
 router.get('/', tweetController.getTweets);
 // Get /tweets/:id
-router.get('/:id', tweetController.getById);
+router.get('/:id', isAuth, tweetController.getById);
 // POST /tweets
 router.post('/', validateTweet, tweetController.create);
 // PUT /tweets/:id
-router.put('/:id', validateTweet, tweetController.update);
+router.put('/:id', isAuth, validateTweet, tweetController.update);
 // DELETE /tweets/:id
-router.delete('/:id', tweetController.delete);
+router.delete('/:id', isAuth, tweetController.delete);
 
 module.exports = router;
