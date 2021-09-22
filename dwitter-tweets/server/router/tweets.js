@@ -6,7 +6,6 @@ const {tweetController} = require('../controller/tweet')
 // GET /tweets
 // Get /tweets?username="username"
 router.get('/',tweetController.getTweets)
-
 // Get /tweets/:id
 router.get('/:id',tweetController.getById)
 // POST /tweets

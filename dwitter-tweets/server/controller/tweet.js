@@ -1,16 +1,16 @@
 const {tweetRepository} = require('../data/tweet')
 
 let tweetController ={}
-tweetController.getTweets=(req,res)=>{
+tweetController.getTweets= async (req,res)=>{
     const username = req.query.username;
-    const data = username ? tweetRepository.getAllByUsername(username)
-                            :tweetRepository.getAll();
+    const data = await (username ? tweetRepository.getAllByUsername(username)
+                            :tweetRepository.getAll());
     return res.status(200).json(data)
 }
 
-tweetController.getById=(req,res)=>{
+tweetController.getById= async (req,res)=>{
     const id = req.params.id;
-    const tweet = tweetRepository.getById(id)
+    const tweet = await tweetRepository.getById(id)
     if(tweet){
         return res.status(200).json(tweet)
     }else{
@@ -18,17 +18,17 @@ tweetController.getById=(req,res)=>{
     }
 } 
 
-tweetController.create=(req,res)=>{
+tweetController.create= async (req,res)=>{
     const {text,name,username} = req.body;
   
-    const tweet = tweetRepository.create(text,name,username)
+    const tweet = await tweetRepository.create(text,name,username)
     return res.status(201).json(tweet)
 } 
 
-tweetController.update=(req,res)=>{
+tweetController.update= async (req,res)=>{
     const id = req.params.id;
     const text = req.body.text;
-    const tweet = tweetRepository.update(id,text)
+    const tweet = await tweetRepository.update(id,text)
     if(tweet){
         return res.status(200).json(tweet)
     }else{
@@ -36,12 +36,12 @@ tweetController.update=(req,res)=>{
     }
 }
 
-tweetController.delete=(req,res)=>{
+tweetController.delete= async (req,res)=>{
     const id = req.params.id;
-    tweetRepository.remove(id)
+    await tweetRepository.remove(id)
     return res.sendStatus(204)
 }
-// router.get('/',(req,res,next)=>{
+// router.get('/', async (req,res,next)=>{
 //     const username = req.query.username;
 //     const data = username ? tweetRepository.getAllByUsername(username)
 //                             :tweetRepository.getAll();
@@ -49,7 +49,7 @@ tweetController.delete=(req,res)=>{
 // })
 
 // Get /tweets/:id
-// router.get('/:id',(req,res,next)=>{
+// router.get('/:id', async (req,res,next)=>{
 //     const id = req.params.id;
 //     const tweet = tweetRepository.getById(id)
 //     if(tweet){
@@ -59,7 +59,7 @@ tweetController.delete=(req,res)=>{
 //     }
 // })
 // POST /tweets
-// router.post('/',(req,res,next)=>{
+// router.post('/', async (req,res,next)=>{
     
 //     const {text,name,username} = req.body;
   
@@ -67,7 +67,7 @@ tweetController.delete=(req,res)=>{
 //     return res.status(201).json(tweet)
 // })
 // PUT /tweets/:id
-// router.put('/:id',(req,res,next)=>{
+// router.put('/:id', async (req,res,next)=>{
 //     const id = req.params.id;
 //     const text = req.body.text;
 //     const tweet = tweetRepository.update(id,text)
@@ -78,7 +78,7 @@ tweetController.delete=(req,res)=>{
 //     }
 // })
 // DELETE /tweets/:id
-// router.delete('/:id',(req,res,next)=>{
+// router.delete('/:id', async (req,res,next)=>{
 //     const id = req.params.id;
 //     tweetRepository.remove(id)
 //     return res.sendStatus(204)
