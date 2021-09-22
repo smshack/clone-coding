@@ -1,4 +1,3 @@
-import axios from 'axios';
 export default class TweetService {
   constructor(baseURL){
     this.baseURL =baseURL;
