@@ -4,6 +4,7 @@ const { userRepository } = require('../data/auth');
 const AUTH_ERROR = { message: 'Authentication Error' };
 
 const isAuth = async (req, res, next) => {
+  // 인증 추가 부분
   const authHeader = req.get('Authorization');
   if (!(authHeader && authHeader.startsWith('Bearer '))) {
     return res.status(401).json(AUTH_ERROR);

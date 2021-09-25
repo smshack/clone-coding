@@ -35,5 +35,6 @@ router.post('/signup', validateSignup, authController.signup);
 // 로그인 인증
 router.post('/login', validateCredential, authController.login);
 
+// 로그인 한 후 유효한지 아닌지 확인
 router.get('/me', isAuth, authController.me);
 module.exports = router;

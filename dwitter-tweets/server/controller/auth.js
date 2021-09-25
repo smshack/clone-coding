@@ -5,7 +5,7 @@ let authController = {};
 
 const jwtSecretKey = 'asdfasdfasdfa';
 const jwtExpiresInDays = '2d';
-const bcryptSaltRounds = 12;
+const bcryptSaltRounds = 10;
 const createJwtToken = (id) => {
   return jwt.sign({ id }, jwtSecretKey, { expiresIn: jwtExpiresInDays });
 };
