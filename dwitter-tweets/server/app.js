@@ -5,7 +5,9 @@ const helmet = require('helmet'); // 보안에 필요한 옵션을 헤더에 추
 const express_error = require('express-async-errors');
 const tweetsRoutes = require('./router/tweets');
 const authRoutes = require('./router/auth');
+const { config } = require('./config');
 // 바디 파서 사용
+
 const app = express();
 
 app.use(express.json());
@@ -23,4 +25,4 @@ app.use((error, req, res, next) => {
   console.error(error);
   res.sendStatus(500);
 });
-app.listen(30010);
+app.listen(config.host.port);

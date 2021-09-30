@@ -1,2 +1,4 @@
 /dwitter-tweets/client/node_modules
+/dwitter-tweets/client/.env
 /dwitter-tweets/server/node_modules
+/dwitter-tweets/server/.env
