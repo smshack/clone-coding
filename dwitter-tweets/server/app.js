@@ -6,6 +6,7 @@ const express_error = require('express-async-errors');
 const tweetsRoutes = require('./router/tweets');
 const authRoutes = require('./router/auth');
 const { config } = require('./config');
+const { initSocket, gettSocketIO } = require('./connection/socket');
 // 바디 파서 사용
 
 const app = express();
@@ -25,4 +26,6 @@ app.use((error, req, res, next) => {
   console.error(error);
   res.sendStatus(500);
 });
-app.listen(config.host.port);
+
+const server = app.listen(config.host.port);
+initSocket(server);

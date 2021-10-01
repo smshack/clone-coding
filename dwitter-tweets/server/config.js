@@ -14,10 +14,10 @@ const config = {
     expriesInSec: required('JWT_EXPRIRES_SEC'),
   },
   bcrypt: {
-    saltRounds: required('BCRYPT_SALT_ROUNDS', 12),
+    saltRounds: parseInt(required('BCRYPT_SALT_ROUNDS', 12)),
   },
   host: {
-    port: required('HOST_PORT', 30010),
+    port: parseInt(required('HOST_PORT', 30010)),
   },
 };
 

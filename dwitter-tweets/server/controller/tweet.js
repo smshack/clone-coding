@@ -1,5 +1,5 @@
 const { tweetRepository } = require('../data/tweet');
-
+const { gettSocketIO } = require('../connection/socket');
 let tweetController = {};
 tweetController.getTweets = async (req, res) => {
   const username = req.query.username;
@@ -23,6 +23,7 @@ tweetController.create = async (req, res) => {
   const { text, name, username } = req.body;
 
   const tweet = await tweetRepository.create(text, name, username);
+  gettSocketIO().emit('tweets', tweet);
   return res.status(201).json(tweet);
 };
 
